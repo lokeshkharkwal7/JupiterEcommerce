@@ -24,7 +24,7 @@ function AdminNavbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className="nav-link active text-decoration-none"
+                  className="nav-link  text-decoration-none"
                   aria-current="page"
                   to="/seller/home"
                 >
@@ -34,6 +34,11 @@ function AdminNavbar() {
               <li className="nav-item">
                 <Link className="nav-link" to="/seller/productdashboard">
                   Product DashBoard
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/seller/sellerproducts">
+                  All Products
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -67,16 +72,6 @@ function AdminNavbar() {
                     </a>
                   </li>
                 </ul>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="#"
-                  tabIndex={-1}
-                  aria-disabled="true"
-                >
-                  Disabled
-                </a>
               </li>
             </ul>
             <button type="button" class="btn btn-light mx-2">

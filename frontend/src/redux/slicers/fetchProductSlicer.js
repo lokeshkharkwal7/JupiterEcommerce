@@ -27,15 +27,7 @@ export const slicerFetchProduct = createSlice({
 export const FetchProductReducer = slicerFetchProduct.reducer;
 // importing all the required actions
 export const { fetchdataRequest } = slicerFetchProduct.actions;
-
-console.log(
-  "Actions in the fetchProductSlicers are : ",
-  slicerFetchProduct.actions
-);
-console.log(
-  "Reducer in the fetchProductionSlicers are : ",
-  slicerFetchProduct.reducer
-);
+ 
 
 // ERRORS THAT I GOT WHILE COMPILING THE CODES :
 

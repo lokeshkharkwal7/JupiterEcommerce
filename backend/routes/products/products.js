@@ -96,4 +96,25 @@ router.get("/seller/product/fetchall",fetchSeller, async (req, resp) => {
 }
 });
 
+// fetching product based on category 
+router.get("/seller/products/:category",fetchSeller, async (req, resp) => {
+  //  getting all the information from the form
+
+  category = req.params.category;
+  const sellerId = req.Seller
+  
+
+  // saving all the information to the mongodb database
+
+  data = await Product.find({
+    pcategory: category,
+    seller : sellerId
+  });
+
+  if (!data) {
+    resp.send("Unable to send the data to the server");
+  }
+  resp.json(data);
+});
+
 module.exports = router;

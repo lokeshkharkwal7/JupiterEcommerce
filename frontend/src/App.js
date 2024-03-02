@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import UserInfo from "./components/UserInfo";
 import AdminHome from "./components/Admin/AdminHome";
 import AdminDashboard from "./components/Admin/AdminDashboard";
+import AdminProducts from "./components/Admin/AdminProducts";
 function App() {
   const categories = [
     "Electronics",
@@ -57,6 +58,19 @@ function App() {
           <Route path={`/seller/home`} element={<AdminHome />} />
           {/* Routes for admin page  */}
           <Route path={`/seller/productdashboard`} element={<AdminDashboard/>} />
+          {/* Routes for admin page  */}
+          <Route path={`/seller/sellerproducts`} element={<AdminProducts/>} />
+
+          {/* For Admin Products  */}
+
+          {categories.map((category) => {
+            return (
+              <Route
+                path={`/seller/products/${category}`}
+                element={<AdminProducts category={`${category}`} />}
+              />
+            );
+          })}
         </Routes>
       </>
     </BrowserRouter>

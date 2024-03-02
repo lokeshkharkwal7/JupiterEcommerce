@@ -27,25 +27,22 @@ function AdminDashboard() {
     console.log("The value of the data is : ", addProductData);
   };
 
-//    ADDING THE PRODUCTS TO THE DATABASE 
-const clickedAddProductsButton = () => {
-
-    addingProductsToDatabase(addProductData, sellerAuthtoken )
-  
-}
-
+  //    ADDING THE PRODUCTS TO THE DATABASE
+  const clickedAddProductsButton = () => {
+    addingProductsToDatabase(addProductData, sellerAuthtoken);
+  };
 
   return (
     <>
       <AdminNavbar />
-      <h1 className="text-danger text-center      py-2 ">
+      <h1 className="text-secondary text-center       py-2 ">
         <i className="fa-solid fa-cart-plus mx-4"></i> Add Products
       </h1>
       <div
         className="container mt-3 bg-danger px-3 py-3 text-light"
         style={{ borderRadius: "20%" }}
       >
-        <div className="container px-5 py-5">
+        <div className="container px-5 py-5 ">
           <form>
             <div className="mb-3">
               <label htmlFor="pname" className="form-label">
@@ -53,8 +50,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="pname"
               />
             </div>
@@ -64,8 +62,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="number"
-                className="form-control"
+                className="form-control text-dark"
                 id="pprice"
               />
             </div>
@@ -75,8 +74,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="pimages"
               />
             </div>
@@ -86,8 +86,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="pcategory"
               />
             </div>
@@ -97,8 +98,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="psubcategory"
               />
             </div>
@@ -108,8 +110,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="ptitle"
               />
             </div>
@@ -119,8 +122,9 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="pdescription"
               />
             </div>
@@ -130,14 +134,16 @@ const clickedAddProductsButton = () => {
               </label>
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="text"
-                className="form-control"
+                className="form-control text-dark"
                 id="porigin"
               />
             </div>
             <div className="mb-3 form-check">
               <input
                 onChange={onChange}
+                style={{ maxWidth: "70%" }}
                 type="checkbox"
                 className="form-check-input"
                 id="exampleCheck1"
@@ -147,7 +153,10 @@ const clickedAddProductsButton = () => {
               </label>
             </div>
             <div className="text-center">
-              <button  className="btn btn-danger fs-3" onClick={clickedAddProductsButton}>
+              <button
+                className="btn btn-danger fs-3"
+                onClick={clickedAddProductsButton}
+              >
                 <i class="fa-solid fa-plus"></i> Add Product
               </button>
             </div>
@@ -155,7 +164,7 @@ const clickedAddProductsButton = () => {
         </div>
       </div>
 
-      <h1 className="text-center mt-2 text-danger mb-5 mt-4">
+      <h1 className="text-center mt-2 text-secondary mb-5 mt-4">
         <i className="fa-regular fa-rectangle-list"></i> Your Products
       </h1>
 
