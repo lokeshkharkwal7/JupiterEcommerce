@@ -81,7 +81,7 @@ router.post("/seller/login", async (req, res) => {
     res.send("Failed Please check credentials");
   }
 });
-
+ 
 
 // FETCHING SELLER INFORMATION 
 // AUTHENTICATING

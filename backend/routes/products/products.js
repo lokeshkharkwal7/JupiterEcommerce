@@ -42,12 +42,13 @@ router.post("/product/create", fetchSeller, async (req, resp) => {
   });
   if (!data) {
     resp.json({
-      status : false ,
-      message : "Unable to send the data to the server"});
+      status: false,
+      message: "Unable to send the data to the server",
+    });
   }
   resp.json({
-    status : true ,
-    message : 'Data successfully added'
+    status: true,
+    message: "Data successfully added",
   });
 });
 
@@ -71,14 +72,11 @@ router.get("/product/:category", async (req, resp) => {
 });
 // fetching all products
 
-router.get("/seller/product/fetchall",fetchSeller, async (req, resp) => {
+router.get("/seller/product/fetchall", fetchSeller, async (req, resp) => {
   try {
-    
- 
-  const seller = req.Seller
-  const sellerId = seller
-  console.log("sellerId : ", sellerId)
-
+    const seller = req.Seller;
+    const sellerId = seller;
+    console.log("sellerId : ", sellerId);
 
     // saving all the information to the mongodb database
 
@@ -86,29 +84,30 @@ router.get("/seller/product/fetchall",fetchSeller, async (req, resp) => {
       seller: sellerId,
     });
 
-  if (!data) {
-    resp.send("Unable to send the data to the server");
+    if (!data) {
+      resp.send("Unable to send the data to the server");
+    }
+    resp.json(data);
+  } catch (error) {
+    console.log(
+      "Error occured while fetching all seller information : ",
+      error
+    );
   }
-  resp.json(data);
-} catch (error) {
-  console.log("Error occured while fetching all seller information : ", error)
-    
-}
 });
 
-// fetching product based on category 
-router.get("/seller/products/:category",fetchSeller, async (req, resp) => {
+// fetching product based on category
+router.get("/seller/products/:category", fetchSeller, async (req, resp) => {
   //  getting all the information from the form
 
   category = req.params.category;
-  const sellerId = req.Seller
-  
+  const sellerId = req.Seller;
 
   // saving all the information to the mongodb database
 
   data = await Product.find({
     pcategory: category,
-    seller : sellerId
+    seller: sellerId,
   });
 
   if (!data) {
@@ -116,5 +115,52 @@ router.get("/seller/products/:category",fetchSeller, async (req, resp) => {
   }
   resp.json(data);
 });
+
+// deleting the products as per the seller id and product name
+router.delete("/seller/products/:pname", fetchSeller, async (req, resp) => {
+  //  getting all the information from the form
+
+  pname = req.params.pname;
+  const sellerId = req.Seller;
+
+  // saving all the information to the mongodb database
+
+  data = await Product.deleteOne({
+    pname: pname,
+    seller: sellerId,
+  });
+
+  if (!data) {
+    resp.send("Unable to send the data to the server");
+  }
+  resp.json(data);
+});
+
+// updating the products as per the seller id and product name
+router.put("/seller/products/:pname", fetchSeller, async (req, resp) => {
+  //  getting all the information from the form
+
+  pname = req.params.pname;
+  const sellerId = req.Seller;
+  const reqData = req.body
+
+  // saving all the information to the mongodb database
+ 
+
+  data = await Product.updateOne({ pname: pname, seller:sellerId}, reqData);
+
+  if (!data) {
+    resp.send("Unable to send the data to the server");
+  }
+  resp.json(data);
+});
+
+
+
+// let status = await Note.updateOne(
+//   { _id: new ObjectId(id) },
+//   { $set: updatedNote }
+// );
+
 
 module.exports = router;

@@ -1,3 +1,5 @@
+// This page will be dispalaying all the products that have been uploaded by the admin
+
 import React, { useEffect } from "react";
 import AdminNavbar from "./AdminNavbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +32,7 @@ function AdminProducts({ category }) {
             <Link
               className="nav-link  "
               aria-current="page"
-              to="/seller/products/Electronic"
+              to="/seller/products/Electronics"
             >
               Home
             </Link>
@@ -68,7 +70,7 @@ function AdminProducts({ category }) {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/seller/products/Home-and-Kitchen">
+            <Link className="nav-link" to="/seller/products/Home and Kitchen">
               Home and Kitchen
             </Link>
           </li>
@@ -77,21 +79,33 @@ function AdminProducts({ category }) {
         {/* ... (unchanged form) */}
       </nav>
 
-      <h1 className="text-center text-secondary mb-2"> Your All Products</h1>
+      <h1 className="text-center text-secondary my-2"> Your All Products</h1>
 
       <div className="container-fluid d-flex flex-wrap mt-1 ">
-        {productSellerBYCategory.map((object) => {
-          return (
-            <AdminProductEditCard
-              pname={object.pname}
-              pimages={object.pimages}
-              ptitle={object.ptitle}
-              pdescription={object.pdescription}
-              pprice={object.pprice}
-              pcategory
-            />
-          );
-        })}
+        {productSellerBYCategory.length === 0 ? (
+          <div className="text-center">
+            <h1 className="Display-1 text-danger">
+              <i className="fa-solid fa-temperature-empty"></i> No Products To
+              Display ...
+            </h1>
+          </div>
+        ) : (
+          productSellerBYCategory.map((object, index) => {
+            return (
+              <AdminProductEditCard
+                key={object.pname + index}
+                pname={object.pname}
+                pimages={object.pimages}
+                ptitle={object.ptitle}
+                pdescription={object.pdescription}
+                pprice={object.pprice}
+                pcategory={object.pcategory}
+                psubcategory={object.psubcategory}
+                porigin={object.porigin}
+              />
+            );
+          })
+        )}
       </div>
     </>
   );

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import adminImage from "../../photos/adminWelcome.png";
 import AdminNavbar from "./AdminNavbar";
-
+import { fetchSeller } from "../../ProjectAPIS/fetchSeller";
 function AdminHome() {
   const sellerDataJSON = localStorage.getItem("sellerDetails");
   const sellerData = JSON.parse(sellerDataJSON);
+  // useEffect(() => {
+  //   // CALLING FETCHUSER TO FETCH THE USER FROM THE AUTH TOKEN
+  //   const authTokenSeller = localStorage.getItem("seller_auth_token");
+  //   fetchSeller(authTokenSeller);
+  // }, []);
+
   return (
     <>
       <div className="bg-danger">
@@ -54,16 +60,16 @@ function AdminHome() {
         <div className="card-body">
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <b>Name:</b> Bharat Joshi
+              <b>Name:</b> {sellerData.sname}
             </li>
             <li className="list-group-item">
-              <b>Email:</b> SellerScoop2@example.com
+              <b>Email:</b> {sellerData.semail}
             </li>
             <li className="list-group-item">
-              <b>Card Number:</b> 1234-5678-9012-3456
+              <b>Card Number:</b> {sellerData.scard}
             </li>
             <li className="list-group-item">
-              <b>Phone Number:</b> 123-456-7890
+              <b>Phone Number:</b> {sellerData.sphonenumber}
             </li>
           </ul>
         </div>

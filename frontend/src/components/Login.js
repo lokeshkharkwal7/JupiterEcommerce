@@ -58,12 +58,12 @@ function Login() {
           "Content-Type": "application/json",
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({ semail : adminemail, spassword : adminpassword }), // body data type must match "Content-Type" header
+        body: JSON.stringify({ semail: adminemail, spassword: adminpassword }), // body data type must match "Content-Type" header
       });
 
       if (response.ok) {
         const auth_token = await response.json(); // parses JSON response into native JavaScript objects
-        console.log("response from the adminlogin is : ", auth_token)
+        console.log("response from the adminlogin is : ", auth_token);
         // changeAuthToken(auth_token);
 
         if (auth_token.status === true) {
@@ -74,14 +74,12 @@ function Login() {
           );
           // ASSIGNIG NEW AUTH TOKEN TO THE LOCAL STORAGE
           /*****************  */
-
           // CALLING FETCHUSER TO FETCH THE USER FROM THE AUTH TOKEN
           const authTokenSeller = localStorage.getItem("seller_auth_token");
-          fetchSeller(authTokenSeller);
-          // ToastMessage("Success", `Welcome ${email} `);
-
-          // alert(`Welcome ${email} `);
-          navigate("/seller/home"); //CHANGE TO DIFFERENT ROUTE
+          const status = await fetchSeller(authTokenSeller);
+          if (status) {
+            navigate("/seller/home"); //CHANGE TO DIFFERENT ROUTE
+          }
 
           //   window.location.reload();                        ONLY IF NECESSARY
           //   console.log("Reload done in login page");

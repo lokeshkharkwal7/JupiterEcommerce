@@ -12,6 +12,7 @@ import UserInfo from "./components/UserInfo";
 import AdminHome from "./components/Admin/AdminHome";
 import AdminDashboard from "./components/Admin/AdminDashboard";
 import AdminProducts from "./components/Admin/AdminProducts";
+import AdminEditProduct from "./components/Admin/AdminEditProduct";
 function App() {
   const categories = [
     "Electronics",
@@ -71,6 +72,12 @@ function App() {
               />
             );
           })}
+
+          {/* Routes for edit products in admin page dashboard  */}
+          <Route path={`/seller/products/toedit`} element={<AdminEditProduct/>
+} />
+
+
         </Routes>
       </>
     </BrowserRouter>

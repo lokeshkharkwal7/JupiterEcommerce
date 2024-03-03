@@ -1,4 +1,7 @@
  export const addingProductsToDatabase = async (data , sellerAuthToken) => {
+  try {
+    
+  
     const response = await fetch("http://localhost:4000/product/create", {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
          headers: {
@@ -17,6 +20,10 @@
       else{
         alert("Unable to add data to the database")
       }
+    } catch (error) {
+      console.log("Error Occured While entering data into the database : ", error)
+    
+    }
     
  }
  

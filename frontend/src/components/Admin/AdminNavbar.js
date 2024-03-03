@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function AdminNavbar() {
+  // for Admin Log out
+  const navigate = useNavigate();
+  const adminLogOut = () => {
+    localStorage.setItem("seller_auth_token", null);
+    navigate("/");
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
@@ -37,49 +44,20 @@ function AdminNavbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/seller/sellerproducts">
+                <Link className="nav-link" to="/seller/products/Electronics">
                   All Products
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Edit Credentials
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
             </ul>
             <button type="button" class="btn btn-light mx-2">
-              <Link to="/" className="text-dark text-decoration-none">
+              <button
+                className="text-dark text-decoration-none"
+                onClick={adminLogOut}
+              >
                 {" "}
                 <i class="fa-solid fa-right-from-bracket mx-2"></i>
                 EXIT
-              </Link>
+              </button>
             </button>
           </div>
         </div>

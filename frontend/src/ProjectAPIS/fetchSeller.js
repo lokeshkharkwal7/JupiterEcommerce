@@ -1,3 +1,4 @@
+// This is the fetchseller middleware that will assign local storage with all the seller details and will return the true or false so that it can be easily used in if elase in login page 
 export const fetchSeller = async (authToken) => {
     try {
         console.log("auth token inside the middleware is : ", authToken)
@@ -15,12 +16,14 @@ export const fetchSeller = async (authToken) => {
         localStorage.setItem("sellerDetails",sellerDataJson )
         console.log("value of seller inside the fetchSeller middleware is ",localStorage.getItem("sellerDetails"))
       }
+      return true
 
       
     
 } catch (error) {
 
     console.log("Error Occured",error)
+    return false
     
 }
 }
